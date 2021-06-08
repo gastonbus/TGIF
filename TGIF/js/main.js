@@ -1,5 +1,5 @@
 function getRows(data) {
-	var table = "";
+	var rows = "";
 	for (let i = 0; i < data.length; i++) {
 		var row = 	
 			`<tr>
@@ -9,9 +9,9 @@ function getRows(data) {
 				<td>${data[i].seniority}</td>
 				<td>${data[i].votes_with_party_pct}</td>
 			</tr>`
-		table += row; //Generacion de filas del listado
+		rows += row; //Generacion de filas del listado
 	}
-	return table;
+	return rows;
 }
 
 document.getElementById("data-rows").innerHTML = getRows(data.results[0].members);

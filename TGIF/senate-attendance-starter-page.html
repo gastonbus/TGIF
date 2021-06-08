@@ -9,13 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-        <!--Link a fuente-->
+    <!--Link a fuente-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Handlee&family=Indie+Flower&family=Shadows+Into+Light&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Senate Data</title>
+    <title>Senate Attendance</title>
 </head>
 
 <body>
@@ -45,7 +45,7 @@
                             <a class="nav-link" aria-current="page" href="home.html">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button"
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Congress 113
                             </a>
@@ -55,7 +55,7 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Attendance
                             </a>
@@ -65,13 +65,14 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Party Loyalty
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="house-party-loyalty-starter-page.html">House</a></li>
-                                <li><a class="dropdown-item" href="senate-attendance-starter-page.html">Senate</a></li>
+                                <li><a class="dropdown-item" href="senate-party-loyalty-starter-page.html">Senate</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -81,27 +82,81 @@
         <main class="row">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-8 main-text">
+                    <div class="col-6 main-text">
                         <h1>Senators</h1>
                         <p>
-                            First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.
+                            The Constitution specifies that a majority of members constitutes a quorum to do business in
+                            each house. Representatives and senators rarely force the presence of a quorum by demanding
+                            quorum calls; thus, in most cases, debates continue even if a majority is not present.
+                        </p>
+                        <p>
+                            The Senate uses roll-call votes; a clerk calls out the names of all the senators, each
+                            senator stating "aye" or "no" when his or her name is announced. The House reserves
+                            roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes
+                            quite some time; normally, members vote by electronic device. In the case of a tie, the
+                            motion in question fails. In the Senate, the Vice President may (if present) cast the
+                            tiebreaking vote.
                         </p>
                     </div>
+                    <div class="col-1"></div>
+                    <div class="col-5 main-text text-end">
+                        <h2>Senate at a glance</h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Party</th>
+                                    <th>Number of Reps</th>
+                                    <th>% Voted with Prty</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Republican</td>
+                                    <td id="republicans-quantity">--</td>
+                                    <td id="republicans-votes-with-party">--</td>
+                                </tr>
+                                <tr>
+                                    <td>Democrat</td>
+                                    <td id="democrats-quantity">--</td>
+                                    <td id="democrats-votes-with-party">--</td>
+                                </tr>
+                                <tr>
+                                    <td>Independent</td>
+                                    <td id="independents-quantity">--</td>
+                                    <td id="independents-votes-with-party">--</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <table class="table table-striped members-list">
+                <div class="row border-top pt-4">
+                    <div class="col-6">
+                        <h2>Least Engaged (Bottom 10% Attendance)</h2>
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Party</th>
-                                    <th>State</th>
-                                    <th>Seniority</th>
-                                    <th>Percentage of votes with party</th>
+                                    <th>Number of Missed Votes</th>
+                                    <th>% Missed</th>
                                 </tr>
                             </thead>
-                            <tbody id="data-rows">
-                                <!--Aca van los registros generados en main.js-->
+                            <tbody id="least-engaged">
+                                <!--Aca van las filas generadas por fillTableLeastEngaged() de statistics.js-->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-6">
+                        <h2>Most Engaged (Top 10% Attendance)</h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Number of Missed Votes</th>
+                                    <th>% Missed</th>
+                                </tr>
+                            </thead>
+                            <tbody id="most-engaged">
+                                <!--Aca van las filas generadas por fillTableMostEngaged() de statistics.js-->
                             </tbody>
                         </table>
                     </div>
@@ -114,9 +169,8 @@
             </div>
         </footer>
     </div>
-
     <script src="js/pro-congress-113-senate.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/statistics.js"></script>
 
     <!-- Llamada a los scripts necesarios para Bootstrap CDN-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"

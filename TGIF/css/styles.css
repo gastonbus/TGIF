@@ -62,7 +62,7 @@ table td, table th {
     color: #555;
 }
 
-table td:first-child {
+.members-list th:first-child {
     width: 395px
 }
 
@@ -78,3 +78,5 @@ footer p {
     font-family: 'Handlee', cursive;
     margin: 0px;
 }
+
+/*Estilos para Attendance*/
