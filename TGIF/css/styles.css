@@ -1,0 +1,80 @@
+.container {
+    font-family: 'Handlee', cursive;
+    font-size: 18px;
+    color: #555;
+}
+
+.mail {
+    text-align: right;
+    padding: 0px;
+    margin-top: 40px;
+}
+
+#email-icon::before {
+    line-height: 1.5;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #058ACD;
+}
+
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+    border: 1px solid #888;
+}
+
+.dropdown-item:hover, .nav-link:focus {
+    background-color: #aaa;
+}
+
+a {
+    color: #058ACD;
+    text-decoration: none;
+}
+
+nav, footer {
+    background-color: #ddd;
+    border: 1px solid #888;
+}
+
+.main-text {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.main-text p {
+    text-indent: 50px;
+}
+
+.card {
+    border: 0px;
+}
+
+#aside-img {
+    margin-top: 60px;
+    width: 100%;
+}
+
+#expand {
+    padding: 0px;
+}
+
+table td, table th {
+    color: #555;
+}
+
+table td:first-child {
+    width: 395px
+}
+
+footer {
+    align-items: center;
+    text-align: center;
+    font-size: 16px ;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+footer p {
+    font-family: 'Handlee', cursive;
+    margin: 0px;
+}
