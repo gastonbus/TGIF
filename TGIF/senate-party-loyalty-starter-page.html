@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="app">
         <header class="row">
             <div class="col-8">
                 <img src="img/TGIF_Logo_2018.png" alt="TGIF-logo">
@@ -104,18 +104,18 @@
                             <tbody>
                                 <tr>
                                     <td>Republican</td>
-                                    <td id="republicans-quantity"></td>
-                                    <td id="republicans-votes-with-party"></td>
+                                    <td>{{republicans}}</td>
+                                    <td>{{republicansAvgVotes}}</td>
                                 </tr>
                                 <tr>
                                     <td>Democrat</td>
-                                    <td id="democrats-quantity"></td>
-                                    <td id="democrats-votes-with-party"></td>
+                                    <td>{{democrats}}</td>
+                                    <td>{{democratsAvgVotes}}</td>
                                 </tr>
                                 <tr>
                                     <td>Independent</td>
-                                    <td id="independents-quantity"></td>
-                                    <td id="independents-votes-with-party"></td>
+                                    <td>{{independents}}</td>
+                                    <td>{{independentsAvgVotes}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -133,7 +133,11 @@
                                 </tr>
                             </thead>
                             <tbody id="least-loyal">
-                                <!--Aca van las filas generadas por fillTableLeastLoyal() de statistics.js-->
+                                <tr v-for="leastLoyalMember in leastLoyalMembers">
+                                    <td><a v-bind:href="leastLoyalMember.url">{{leastLoyalMember.first_name}} {{leastLoyalMember.middle_name}} {{leastLoyalMember.last_name}}</a></td>
+                                    <td>{{leastLoyalMember.total_votes}}</td>
+                                    <td>{{leastLoyalMember.votes_with_party_pct}}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -148,7 +152,11 @@
                                 </tr>
                             </thead>
                             <tbody id="most-loyal">
-                                <!--Aca van las filas generadas por fillTableMostLoyal() de statistics.js-->
+                                <tr v-for="mostLoyalMember in mostLoyalMembers">
+                                    <td><a v-bind:href="mostLoyalMember.url">{{mostLoyalMember.first_name}} {{mostLoyalMember.middle_name}} {{mostLoyalMember.last_name}}</a></td>
+                                    <td>{{mostLoyalMember.total_votes}}</td>
+                                    <td>{{mostLoyalMember.votes_with_party_pct}}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -161,8 +169,10 @@
             </div>
         </footer>
     </div>
+    <!-- Llamada Vue.js CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
-    <script src="js/pro-congress-113-senate.js"></script>
+    <script src="js/import-data.js"></script>
     <script src="js/statistics.js"></script>
 
     <!-- Llamada a los scripts necesarios para Bootstrap CDN-->

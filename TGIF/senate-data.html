@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-        <!--Link a fuente-->
+    <!--Link a fuente-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Handlee&family=Indie+Flower&family=Shadows+Into+Light&display=swap"
@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="app">
         <header class="row">
             <div class="col-8">
                 <img src="img/TGIF_Logo_2018.png" alt="TGIF-logo">
@@ -45,8 +45,8 @@
                             <a class="nav-link" aria-current="page" href="home.html">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Congress 113
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -55,8 +55,8 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Attendance
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -65,8 +65,8 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Party Loyalty
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -84,7 +84,14 @@
                     <div class="col-8 main-text">
                         <h1>Senators</h1>
                         <p>
-                            First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.
+                            First convened in 1789, the composition and powers of the Senate are established in Article
+                            One of the U.S. Constitution. Each state is represented by two senators, regardless of
+                            population, who serve staggered six-year terms. The Senate has several exclusive powers not
+                            granted to the House, including consenting to treaties as a precondition to their
+                            ratification and consenting to or confirming appointments of Cabinet secretaries, federal
+                            judges, other federal executive officials, military officers, regulatory officials,
+                            ambassadors, and other federal uniformed officers, as well as trial of federal officials
+                            impeached by the House.
                         </p>
                     </div>
                 </div>
@@ -100,8 +107,14 @@
                                     <th>Percentage of votes with party</th>
                                 </tr>
                             </thead>
-                            <tbody id="data-rows">
-                                <!--Aca van los registros generados en main.js-->
+                            <tbody>
+                                <tr v-for="member in members">
+                                    <td><a v-bind:href="member.url"> {{member.first_name}} {{member.middle_name}} {{member.last_name}}</a></td>
+                                    <td>{{member.party}}</td>
+                                    <td>{{member.state}}</td>
+                                    <td>{{member.seniority}}</td>
+                                    <td>{{member.votes_with_party_pct}}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -114,9 +127,11 @@
             </div>
         </footer>
     </div>
+    <!-- Llamada Vue.js CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
-    <script src="js/pro-congress-113-senate.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/import-data.js"></script>
 
     <!-- Llamada a los scripts necesarios para Bootstrap CDN-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"

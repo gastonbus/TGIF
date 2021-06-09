@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="app">
         <header class="row">
             <div class="col-8">
                 <img src="img/TGIF_Logo_2018.png" alt="TGIF-logo">
@@ -112,18 +112,18 @@
                             <tbody>
                                 <tr>
                                     <td>Republican</td>
-                                    <td id="republicans-quantity">--</td>
-                                    <td id="republicans-votes-with-party">--</td>
+                                    <td>{{republicans}}</td>
+                                    <td>{{republicansAvgVotes}}</td>
                                 </tr>
                                 <tr>
                                     <td>Democrat</td>
-                                    <td id="democrats-quantity">--</td>
-                                    <td id="democrats-votes-with-party">--</td>
+                                    <td>{{democrats}}</td>
+                                    <td>{{democratsAvgVotes}}</td>
                                 </tr>
                                 <tr>
                                     <td>Independent</td>
-                                    <td id="independents-quantity">--</td>
-                                    <td id="independents-votes-with-party">--</td>
+                                    <td>{{independents}}</td>
+                                    <td>{{independentsAvgVotes}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -141,7 +141,11 @@
                                 </tr>
                             </thead>
                             <tbody id="least-engaged">
-                                <!--Aca van las filas generadas por fillTableLeastEngaged() de statistics.js-->
+                                <tr v-for="leastEngagedMember in leastEngagedMembers">
+                                    <td><a v-bind:href="leastEngagedMember.url">{{leastEngagedMember.first_name}} {{leastEngagedMember.middle_name}} {{leastEngagedMember.last_name}}</a></td>
+                                    <td>{{leastEngagedMember.total_votes}}</td>
+                                    <td>{{leastEngagedMember.votes_with_party_pct}}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -156,7 +160,11 @@
                                 </tr>
                             </thead>
                             <tbody id="most-engaged">
-                                <!--Aca van las filas generadas por fillTableMostEngaged() de statistics.js-->
+                                <tr v-for="mostEngagedMember in mostEngagedMembers">
+                                    <td><a v-bind:href="mostEngagedMember.url">{{mostEngagedMember.first_name}} {{mostEngagedMember.middle_name}} {{mostEngagedMember.last_name}}</a></td>
+                                    <td>{{mostEngagedMember.total_votes}}</td>
+                                    <td>{{mostEngagedMember.votes_with_party_pct}}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -169,8 +177,11 @@
             </div>
         </footer>
     </div>
-    <script src="js/pro-congress-113-senate.js"></script>
+    <!-- Llamada Vue.js CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
     <script src="js/statistics.js"></script>
+    <script src="js/import-data.js"></script>
 
     <!-- Llamada a los scripts necesarios para Bootstrap CDN-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
